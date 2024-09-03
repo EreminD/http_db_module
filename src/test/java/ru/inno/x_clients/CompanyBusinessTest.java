@@ -27,7 +27,7 @@ public class CompanyBusinessTest {
 
     @BeforeAll
     public static void setUp() {
-        RestAssured.baseURI = "https://x-clients-be.onrender.com";
+        RestAssured.baseURI = "https://x-clients-be.onrender.com"; // properties.getProperty("url");
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -69,5 +69,7 @@ public class CompanyBusinessTest {
         Optional<Company> optional = helper.getById(3376);
         assertTrue(optional.isEmpty());
     }
+
+    //TODO: сверить множество записей. Например, получить неактивные компании и сравнить id'шники?
 }
 

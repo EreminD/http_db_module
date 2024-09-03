@@ -4,13 +4,12 @@ import org.junit.jupiter.api.extension.*;
 import ru.inno.x_clients.db.CompanyRepository;
 import ru.inno.x_clients.db.CompanyRepositoryJDBC;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public class CompanyTableParameterResolver implements ParameterResolver, AfterAllCallback, BeforeAllCallback {
-    private final static String connectionString = "jdbc:postgresql://dpg-cqsr9ulumphs73c2q40g-a.frankfurt-postgres.render.com/x_clients_db_fxd0";
-    private final static String username = "x_clients_user";
-    private final static String password = "95PM5lQE0NfzJWDQmLjbZ45ewrz1fLYa";
     private Connection connection;
 
     @Override
@@ -25,6 +24,17 @@ public class CompanyTableParameterResolver implements ParameterResolver, AfterAl
 
     @Override
     public void beforeAll(ExtensionContext context) throws Exception {
+
+        String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        String appConfigPath = rootPath + "env.properties";
+
+        Properties properties = new Properties();
+        properties.load(new FileInputStream(appConfigPath));
+
+        String connectionString = properties.getProperty("db.connection_string");
+        String username = properties.getProperty("db.user");
+        String password = properties.getProperty("db.pass");
+
         connection = DriverManager.getConnection(connectionString, username, password);
     }
 
