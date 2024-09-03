@@ -57,7 +57,7 @@ public class CompanyApiHelper {
     }
 
     public Optional<Company> getById(int id) throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         Response response = given()
                 .basePath("company")
                 .pathParam("id", id)
