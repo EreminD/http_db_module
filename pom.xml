@@ -81,27 +81,13 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.swagger.codegen.v3</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>3.0.61</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-<!--                        <configuration>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/pet-api.yaml</inputSpec>-->
-<!--                            <language>java</language>-->
-<!--                            <output>${project.build.directory}/generated-sources/</output>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                            <apiPackage>com.myorg.petservice.api</apiPackage>-->
-<!--                            <modelPackage>com.myorg.petservice.models</modelPackage>-->
-<!--                            <configOptions>-->
-<!--                                <interfaceOnly>true</interfaceOnly>-->
-<!--                            </configOptions>-->
-<!--                        </configuration>-->
-                    </execution>
-                </executions>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <includes>
+                        <include>ru/inno/todo/tests/*.java</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
