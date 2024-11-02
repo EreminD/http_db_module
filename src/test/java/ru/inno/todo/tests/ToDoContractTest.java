@@ -88,7 +88,7 @@ public class ToDoContractTest {
         String myUrl = URL + id;
         HttpDelete deleteTaskReq = new HttpDelete(myUrl);
         HttpResponse response = client.execute(deleteTaskReq);
-        assertEquals(204, response.getStatusLine().getStatusCode());
+        assertEquals(200, response.getStatusLine().getStatusCode());
         assertEquals(1, response.getHeaders("Content-Length").length);
         assertEquals("\"todo was deleted\"", EntityUtils.toString(response.getEntity()));
     }
