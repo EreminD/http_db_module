@@ -23,5 +23,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('Report'){
+            steps {
+                junit stdioRetention: '', testResults: ''
+            }
+        }
     }
 }
