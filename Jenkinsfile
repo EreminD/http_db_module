@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Report'){
             steps {
-                junit stdioRetention: '', testResults: ''
+                junit keepProperties: true, keepTestNames: true, stdioRetention: '', testResults: 'target/surefire-reports/TEST*.xml'
             }
         }
     }
