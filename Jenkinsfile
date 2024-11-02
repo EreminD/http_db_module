@@ -23,11 +23,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Report'){
-            steps {
-
-            }
-        }
     }
     post {
         always {
